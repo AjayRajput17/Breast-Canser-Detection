@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>ML API</title>
+
+    <style>
+      /* CSS code for button */
+      body {
+        background-image: url("hospital.jpg");
+        background-repeat: no-repeat;
+        font-size: 16px;
+        background-attachment: fixed;
+        background-size: cover;
+        align-items: center;
+      }
+
+      img {
+        display: block;
+        margin: auto;
+      }
+
+      /* CSS code for button */
+      .button_css {
+        color: #020202;
+        margin: 20px;
+        text-transform: uppercase;
+        text-decoration: none;
+        background: #2c92c5;
+        padding: 2px;
+        border: 2px solid #3a3a3a !important;
+        display: inline-block;
+        transition: all 0.4s ease 0s;
+      }
+
+      .button_css:hover {
+        color: #1e800c !important;
+        background: #218126;
+        /* border-color: #f6b93b !important; */
+        /* transition: all 0.4s ease 0s; */
+      }
+
+      /* Media query for screens smaller than 600px */
+      @media (max-width: 600px) {
+        body {
+          font-size: 14px;
+          /* other styles for small screens */
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Show Indian AI Hospital banner-->
+
+    <div>
+      <img
+        src="cancer.png"
+        class="center"
+        alt="cancer image"
+        style="width: 90%"
+      />
+    </div>
+
+    <div class="login">
+      <!-- Get input for predict the cancer -->
+      <center style="margin: 30px; padding: 30px">
+        <form action="{{url_for('predict')}}" method="POST">
+          <h1>Enter the values for prediction</h1>
+
+          <input
+            type="text"
+            style="margin: 10px; padding: 5px"
+            name="mean_radius"
+            placeholder="mean radius"
+            value="13.08"
+             
+          />
+          <input
+            type="text"
+            style="margin: 10px; padding: 5px"
+            name="mean_texture"
+            placeholder="mean texture"
+            value="15.71"
+             
+          />
+          <input
+            type="text"
+            style="margin: 10px; padding: 5px"
+            name="mean_perimeter"
+            placeholder="mean perimeter"
+            value="85.63"
+             
+          />
+          <input
+            type="text"
+            style="margin: 10px; padding: 5px"
+            name="mean_area"
+            placeholder="mean area"
+            value="520"
+             
+          />
+          <input
+            type="text"
+            style="margin: 10px; padding: 5px"
+            name="mean_smoothness"
+            placeholder="mean smoothness"
+            value="0.1075"
+             
+          />
+          <input
+            type="text"
+            style="margin: 10px; padding: 5px"
+            name="mean_compactness"
+            placeholder="mean compactness"
+            value="0.127"
+             
+          />
+          <br />
+          <input
+            type="text"
+            style="margin: 10px; padding: 5px"
+            name="mean_concavity"
+            placeholder="mean concavity"
+            value="0.04568"
+            
+          />
+          <input
+            type="text"
+            style="margin: 10px; padding: 5px"
+            name="mean_concave_points"
+            placeholder="mean concave points"
+            value="0.0311"
+            
+          />
+          <input
+            type="text"
+            style="margin: 10px; padding: 5px"
+            name="mean_symmetry"
+            placeholder="mean symmetry"
+            value="0.1967"
+           
+          />
+          <input
+            type="text"
+            style="margin: 10px; padding: 5px"
+            name="mean_fractal_dimension"
+            placeholder="mean fractal dimension"
+            value="0.06811"
+            
+          />
+          <input
+            type="text"
+            style="margin: 10px; padding: 5px"
+            name="radius_error"
+            placeholder="radius error"
+            value="0.1852"
+            
+          />
+          <input
+            type="text"
+            style="margin: 10px; padding: 5px"
+            name="texture_error"
+            placeholder="texture error"
+            value="0.7477"
+            
+          />
+          <br />
+          <input
+            type="text"
+            style="margin: 10px; padding: 5px"
+            name="perimeter_error"
+            placeholder="perimeter error"
+            value="1.383"
+            
+          />
+          <input
+            type="text"
+            style="margin: 10px; padding: 5px"
+            name="area_error"
+            placeholder="area error "
+            value="14.67"
+            
+          />
+          <input
+            type="text"
+            style="margin: 10px; padding: 5px"
+            style="margin: 10px; padding: 5px"
+            name="smoothness_error"
+            placeholder="smoothness error"
+            value="0.004097"
+            
+          />
+          <input
+            type="text"
+            style="margin: 10px; padding: 5px"
+            name="compactness_error"
+            placeholder="compactness error"
+            value="0.01898"
+            
+          />
+          <input
+            type="text"
+            style="margin: 10px; padding: 5px"
+            name="concavity_error"
+            placeholder="concavity error"
+            value="0.01698"
+            
+          />
+          <input
+            type="text"
+            style="margin: 10px; padding: 5px"
+            name="concave_points_error"
+            placeholder="concave points error"
+            value="0.00649"
+            
+          />
+          <br />
+          <input
+            type="text"
+            style="margin: 10px; padding: 5px"
+            name="symmetry_error"
+            placeholder="symmetry error"
+            value="0.01678"
+            
+          />
+          <input
+            type="text"
+            style="margin: 10px; padding: 5px"
+            name="fractal_dimension_error"
+            placeholder="fractal dimension error"
+            value="0.002425"
+            
+          />
+          <input
+            type="text"
+            style="margin: 10px; padding: 5px"
+            name="worst_radius"
+            placeholder="worst radius"
+            value="14.5"
+            
+          />
+          <input
+            type="text"
+            style="margin: 10px; padding: 5px"
+            name="worst_texture"
+            placeholder="worst texture"
+            value="20.49"
+           
+          />
+          <input
+            type="text"
+            style="margin: 10px; padding: 5px"
+            name="worst_perimeter"
+            placeholder="worst perimeter"
+            value="96.09"
+            
+          />
+          <input
+            type="text"
+            style="margin: 10px; padding: 5px"
+            name="worst_area"
+            placeholder="worst area"
+            value="630.5"
+            
+          />
+          <br />
+          <input
+            type="text"
+            style="margin: 10px; padding: 5px"
+            name="worst_smoothness"
+            placeholder="worst smoothness"
+            value="0.1312"
+            
+          />
+          <input
+            type="text"
+            style="margin: 10px; padding: 5px"
+            name="worst_compactness"
+            placeholder="worst compactness"
+            value="0.2776"
+            
+          />
+          <input
+            type="text"
+            style="margin: 10px; padding: 5px"
+            name="worst_concavity"
+            placeholder="worst concavity"
+            value="0.189"
+            
+          />
+          <input
+            type="text"
+            style="margin: 10px; padding: 5px"
+            name="worst_concave_points"
+            placeholder="worst concave points"
+            value="0.07283"
+            
+          />
+          <input
+            type="text"
+            style="margin: 10px; padding: 5px"
+            name="worst_symmetry"
+            placeholder="'worst symmetry"
+            value="0.3184"
+            
+          />
+          <input
+            type="text"
+            style="margin: 10px; padding: 5px"
+            name="worst_fractal_dimension"
+            placeholder="worst fractal dimension"
+            value="0.08183"
+            
+          />
+          <br />
+          <br />
+
+          <!-- Show button -->
+          <div class="button_cont" align="center">
+            <a
+              class="button_css"
+              href="./predict"
+              target="_blank"
+              rel="nofollow noopener"
+            >
+              <button type="submit" class="btn btn-primary btn-block btn-large">
+                <strong>Predict Result</strong>
+              </button></a
+            >
+          </div>
+        </form>
+      </center>
+
+      <!-- Show predicted output using ML model -->
+      <div>
+        <center>
+          <h1>Result to be shown here :</h1>
+        </center>
+      </div>
+    </div>
+  </body>
+</html>
